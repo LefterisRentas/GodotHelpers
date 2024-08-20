@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpbjj3k6bv2ty"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7r8vm"]
+[ext_resource type="Script" path="res://Scripts/Character/Implementations/PlayerCharacter.cs" id="2_76i4j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1u5j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h783m"]
+
+[node name="PlayerPrefab" type="CharacterBody3D"]
+script = ExtResource("1_7r8vm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_s1u5j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_h783m")
+skeleton = NodePath("")
+
+[node name="PlayerCharacter" type="Node3D" parent="."]
+script = ExtResource("2_76i4j")
+Health = 1.0
+MaxHealth = 1.0
+Stamina = 1.0
+MaxStamina = 1.0
+Resource = 1.0
+MaxResource = 1.0
+MovementSpeed = 10.0
+IsAlive = true
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.90661, 0.42197, 0, -0.42197, 0.90661, -0.433933, 2.00688, 2.84557)
+current = true
+fov = 110.0

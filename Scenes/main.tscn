@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgtgb7vmqbt8d"]
+
+[ext_resource type="PackedScene" uid="uid://cpbjj3k6bv2ty" path="res://Scenes/player_prefab.tscn" id="1_g26t6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mq24x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kdvj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4cgw"]
+
+[sub_resource type="Sky" id="Sky_2wx0r"]
+sky_material = SubResource("ProceduralSkyMaterial_a4cgw")
+
+[sub_resource type="Environment" id="Environment_07ecr"]
+background_mode = 2
+sky = SubResource("Sky_2wx0r")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_4grnj"]
+
+[sub_resource type="Compositor" id="Compositor_6gwxm"]
+
+[node name="Main" type="Node3D"]
+
+[node name="PlayerPrefab" parent="." instance=ExtResource("1_g26t6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65691, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 65535
+collision_mask = 65535
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(22, 0, 0, 0, 1, 0, 0, 0, 22, 0, -0.501119, 0)
+mesh = SubResource("BoxMesh_mq24x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(22, 0, 0, 0, 1, 0, 0, 0, 22, 0, -0.499517, 0)
+shape = SubResource("BoxShape3D_4kdvj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_07ecr")
+camera_attributes = SubResource("CameraAttributesPhysical_4grnj")
+compositor = SubResource("Compositor_6gwxm")
