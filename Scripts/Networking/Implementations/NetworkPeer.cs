@@ -5,6 +5,9 @@ using Godot.RPG.Scripts.Networking.Abstractions;
 
 namespace Godot.RPG.Scripts.Networking.Implementations;
 
+/// <summary>
+/// <inheritdoc cref="INetworkPeer"/>
+/// </summary>
 public class NetworkPeer : INetworkPeer
 {
 	private static readonly Lazy<NetworkPeer> _instance = new(() => new NetworkPeer());
